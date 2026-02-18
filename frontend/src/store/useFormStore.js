@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import {  persist } from 'zustand/middleware'
 
 // ── Initial State Slices ──────────────────────────────────────────────────────
 
@@ -54,7 +54,7 @@ const initialPermanent = {
 // ── Store ─────────────────────────────────────────────────────────────────────
 
 const useFormStore = create(
-  devtools(
+  persist(
     (set, get) => ({
       // ── Navigation ─────────────────────────────────────────────────────────
       currentStep:    0,

@@ -8,6 +8,8 @@ import PermanentAddressPage from './pages/PermanentAddressPage'
 import SuccessPage from './pages/SuccessPage'
 import styles from './components/modules/App.module.css'
 
+
+
 const PAGES = [
   <EducationalPage />,
   <ParentsPage />,
