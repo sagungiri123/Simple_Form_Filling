@@ -1,43 +1,43 @@
 import { create } from 'zustand'
-import {  persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 // ── Initial State Slices ──────────────────────────────────────────────────────
 
 const initialEducational = {
-  fullName:    '',
-  dob:         '',
-  gender:      '',
-  studentId:   '',
+  fullName: '',
+  dob: '',
+  gender: '',
+  studentId: '',
   institution: '',
-  degree:      '',
-  branch:      '',
-  year:        '',
-  cgpa:        '',
-  board:       '',
-  passYear:    '',
-  percentage:  '',
+  degree: '',
+  branch: '',
+  year: '',
+  cgpa: '',
+  board: '',
+  passYear: '',
+  percentage: '',
 }
 
 const initialParents = {
-  fatherName:       '',
+  fatherName: '',
   fatherOccupation: '',
-  fatherContact:    '',
-  fatherEmail:      '',
-  motherName:       '',
+  fatherContact: '',
+  fatherEmail: '',
+  motherName: '',
   motherOccupation: '',
-  motherContact:    '',
-  motherEmail:      '',
-  annualIncome:     '',
-  guardian:         '',
+  motherContact: '',
+  motherEmail: '',
+  annualIncome: '',
+  guardian: '',
 }
 
 const initialAddress = {
-  line1:    '',
-  line2:    '',
-  city:     '',
-  state:    '',
-  pincode:  '',
-  country:  'India',
+  line1: '',
+  line2: '',
+  city: '',
+  state: '',
+  pincode: '',
+  country: 'India',
   landmark: '',
 }
 
@@ -57,14 +57,14 @@ const useFormStore = create(
   persist(
     (set, get) => ({
       // ── Navigation ─────────────────────────────────────────────────────────
-      currentStep:    0,
+      currentStep: 0,
       completedSteps: [],
 
       // ── Data Slices ────────────────────────────────────────────────────────
       educational: { ...initialEducational },
-      parents:     { ...initialParents },
-      temporary:   { ...initialTemporary },
-      permanent:   { ...initialPermanent },
+      parents: { ...initialParents },
+      temporary: { ...initialTemporary },
+      permanent: { ...initialPermanent },
 
       // ── Navigation Actions ─────────────────────────────────────────────────
       setStep: (step) => set({ currentStep: step }, false, 'setStep'),
@@ -92,7 +92,7 @@ const useFormStore = create(
           'goToPrevStep'
         ),
 
-      // ── Data Update Actions ────────────────────────────────────────────────
+      // ── Data Update Actions ──────────────────────────────────────────────── 
       updateEducational: (data) =>
         set(
           (state) => ({ educational: { ...state.educational, ...data } }),
@@ -127,15 +127,15 @@ const useFormStore = create(
           (state) => ({
             permanent: val
               ? {
-                  line1:      state.temporary.line1,
-                  line2:      state.temporary.line2,
-                  city:       state.temporary.city,
-                  state:      state.temporary.state,
-                  pincode:    state.temporary.pincode,
-                  country:    state.temporary.country,
-                  landmark:   state.temporary.landmark,
-                  sameAsTemp: true,
-                }
+                line1: state.temporary.line1,
+                line2: state.temporary.line2,
+                city: state.temporary.city,
+                state: state.temporary.state,
+                pincode: state.temporary.pincode,
+                country: state.temporary.country,
+                landmark: state.temporary.landmark,
+                sameAsTemp: true,
+              }
               : { ...state.permanent, sameAsTemp: false },
           }),
           false,
@@ -145,12 +145,12 @@ const useFormStore = create(
       resetForm: () =>
         set(
           {
-            currentStep:    0,
+            currentStep: 0,
             completedSteps: [],
-            educational:    { ...initialEducational },
-            parents:        { ...initialParents },
-            temporary:      { ...initialTemporary },
-            permanent:      { ...initialPermanent },
+            educational: { ...initialEducational },
+            parents: { ...initialParents },
+            temporary: { ...initialTemporary },
+            permanent: { ...initialPermanent },
           },
           false,
           'resetForm'
@@ -171,4 +171,4 @@ const useFormStore = create(
   )
 )
 
-export default useFormStore
+export default useFormStore 
